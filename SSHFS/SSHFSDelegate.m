@@ -177,11 +177,11 @@ static NSString *advancedViewControllerKey = @"sshfsAdvancedView";
 - (BOOL)validateValue:(id)value forParameterName:(NSString*)paramName error:(NSError **)outError {
 	if ([paramName isEqualToString:kNetFSPortParameter]) {
 		NSNumber* converted = [NSNumber numberWithInt:[value intValue]];
-		if([converted isKindOfClass:[NSNumber class]] && [converted intValue] > 0 && [converted intValue] < 65535) {
+		if([converted isKindOfClass:[NSNumber class]] && [converted intValue] > 0 && [converted intValue] <= 65535) {
 			return YES;
 		} else {
 			if (outError) {
-				*outError = [MFError invalidParameterValueErrorWithParameterName:kNetFSPortParameter value:value description:@"Must be positive number < 65535"];	
+				*outError = [MFError invalidParameterValueErrorWithParameterName:kNetFSPortParameter value:value description:@"Must be positive number <= 65535"];	
 			}
 			return NO;
 		}
