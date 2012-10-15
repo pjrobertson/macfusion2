@@ -159,7 +159,7 @@ static NSString *advancedViewControllerKey = @"sshfsAdvancedView";
 - (BOOL)validateValue:(id)value forParameterName:(NSString *)paramName error:(NSError **)error {
 	if ([paramName isEqualToString:kNetFSPortParameter ]) {
 		NSNumber *converted = [NSNumber numberWithInt:[value intValue]];
-		if( [converted isKindOfClass:[NSNumber class]] && [converted intValue] > 0 && [converted intValue] < 65535 ) {
+		if( [converted isKindOfClass:[NSNumber class]] && [converted intValue] > 0 && [converted intValue] <= 65535 ) {
 			return YES;
 		} else {
 			if (error) {
